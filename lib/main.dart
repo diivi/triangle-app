@@ -8,7 +8,7 @@ const MaterialColor primaryBlack = MaterialColor(
   _blackPrimaryValue,
   <int, Color>{
     50: Color(0xFF000000),
-    100: Color(0xFF000000),   
+    100: Color(0xFF000000),
     200: Color(0xFF000000),
     300: Color(0xFF000000),
     400: Color(0xFF000000),
@@ -38,17 +38,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: primaryBlack,
-          ),
+        // This is the theme of your application.
+        //
+        // Try running your application with "flutter run". You'll see the
+        // application has a blue toolbar. Then, without quitting the app, try
+        // changing the primarySwatch below to Colors.green and then invoke
+        // "hot reload" (press "r" in the console where you ran "flutter run",
+        // or simply save your changes to "hot reload" in a Flutter IDE).
+        // Notice that the counter didn't reset back to zero; the application
+        // is not restarted.
+        primarySwatch: primaryBlack,
+      ),
       home: AuthGate(),
     );
   }
@@ -88,8 +88,14 @@ class TriangleApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Triangle'),
+        // backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: const Text('Triangle',
+            style: TextStyle(
+              color: Colors.white,
+            )),
       ),
+      drawer: Drawer(child: Text("")),
       body: const Center(
         child: FloatingActionButton(
           onPressed: logOut,
@@ -104,7 +110,6 @@ class TriangleApp extends StatelessWidget {
         child: const Icon(Icons.add), //icon inside button
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-  
       bottomNavigationBar: BottomAppBar(
         color: Colors.grey[900],
         shape: const CircularNotchedRectangle(),
