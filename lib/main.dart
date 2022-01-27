@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:triangle/navigation_drawer_widget.dart';
+import 'package:triangle/screens/profile.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterfire_ui/auth.dart';
@@ -87,6 +89,7 @@ class TriangleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(
         // backgroundColor: Colors.transparent,
         elevation: 0,
@@ -95,7 +98,6 @@ class TriangleApp extends StatelessWidget {
               color: Colors.white,
             )),
       ),
-      drawer: Drawer(child: Text("")),
       body: const Center(
         child: FloatingActionButton(
           onPressed: logOut,
@@ -131,7 +133,10 @@ class TriangleApp extends StatelessWidget {
                         Icons.show_chart,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Profile()));
+                      },
                     ),
                     const Text('Markets',
                         style: TextStyle(color: Colors.white)),
