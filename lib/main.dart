@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:triangle/navigation_drawer_widget.dart';
-import 'package:triangle/screens/profile.dart';
+import 'package:triangle/screens/markets.dart';
 import 'firebase_options.dart';
+import 'package:triangle/screens/dailies.dart';
+import 'package:triangle/screens/rewards.dart';
+import "package:triangle/screens/profile.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterfire_ui/auth.dart';
 
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -83,8 +87,15 @@ class AuthGate extends StatelessWidget {
   }
 }
 
-class TriangleApp extends StatelessWidget {
+class TriangleApp extends StatefulWidget {
   const TriangleApp({Key? key}) : super(key: key);
+
+  @override
+  State<TriangleApp> createState() => _TriangleAppState();
+}
+
+class _TriangleAppState extends State<TriangleApp> {
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -98,11 +109,49 @@ class TriangleApp extends StatelessWidget {
               color: Colors.white,
             )),
       ),
-      body: const Center(
-        child: FloatingActionButton(
-          onPressed: logOut,
-          child: Icon(Icons.exit_to_app),
-        ),
+      body: Stack(
+        children: <Widget>[
+          Offstage(
+            offstage: index != 0,
+            child: TickerMode(
+              enabled: index == 0,
+              child: const MaterialApp(
+                home: Scaffold(body: MarketPage()),
+                debugShowCheckedModeBanner: false,
+              ),
+            ),
+          ),
+          Offstage(
+            offstage: index != 1,
+            child: TickerMode(
+              enabled: index == 1,
+              child: const MaterialApp(
+                home: Scaffold(body: DailiesPage()),
+                debugShowCheckedModeBanner: false,
+              ),
+            ),
+          ),
+          Offstage(
+            offstage: index != 2,
+            child: TickerMode(
+              enabled: index == 2,
+              child: const MaterialApp(
+                home: Scaffold(body: RewardsPage()),
+                debugShowCheckedModeBanner: false,
+              ),
+            ),
+          ),
+          Offstage(
+            offstage: index != 3,
+            child: TickerMode(
+              enabled: index == 3,
+              child: const MaterialApp(
+                home: Scaffold(body: ProfilePage()),
+                debugShowCheckedModeBanner: false,
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         //Floating action button on Scaffold
@@ -134,8 +183,9 @@ class TriangleApp extends StatelessWidget {
                         color: Colors.white,
                       ),
                       onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Profile()));
+                        setState(() {
+                          index = 0;
+                        });
                       },
                     ),
                     const Text('Markets',
@@ -153,7 +203,11 @@ class TriangleApp extends StatelessWidget {
                         Icons.calendar_today_outlined,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          index = 1;
+                        });
+                      },
                     ),
                     const Text('Dailies',
                         style: TextStyle(color: Colors.white)),
@@ -170,7 +224,11 @@ class TriangleApp extends StatelessWidget {
                         Icons.star,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          index = 2;
+                        });
+                      },
                     ),
                     const Text('Rewards',
                         style: TextStyle(color: Colors.white)),
@@ -187,7 +245,11 @@ class TriangleApp extends StatelessWidget {
                         Icons.person,
                         color: Colors.white,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          index = 3;
+                        });
+                      },
                     ),
                     const Text('Profile',
                         style: TextStyle(color: Colors.white)),
