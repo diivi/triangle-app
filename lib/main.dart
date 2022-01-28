@@ -100,14 +100,11 @@ class _TriangleAppState extends State<TriangleApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        // backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Triangle',
-            style: TextStyle(
-              color: Colors.white,
-            )),
+        backgroundColor: Colors.transparent,
       ),
       body: Stack(
         children: <Widget>[
