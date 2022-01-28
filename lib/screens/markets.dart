@@ -33,7 +33,7 @@ class _MarketPageState extends State<MarketPage> {
             length: 3,
             child: Scaffold(
               appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(25.0),
+                preferredSize: const Size.fromHeight(1.0),
                 child: Container(
                   color: Colors.white,
                   child: Column(

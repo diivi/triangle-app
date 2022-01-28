@@ -103,9 +103,9 @@ class _TriangleAppState extends State<TriangleApp> {
       extendBodyBehindAppBar: true,
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          iconTheme: const IconThemeData(color: Colors.grey)),
       body: Stack(
         children: <Widget>[
           Offstage(
