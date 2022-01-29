@@ -5,6 +5,7 @@ import 'package:triangle/screens/markets.dart';
 import 'firebase_options.dart';
 import 'package:triangle/screens/dailies.dart';
 import 'package:triangle/screens/rewards.dart';
+import 'package:triangle/screens/new_entry.dart';
 import "package:triangle/screens/profile.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterfire_ui/auth.dart';
@@ -149,12 +150,24 @@ class _TriangleAppState extends State<TriangleApp> {
               ),
             ),
           ),
+          Offstage(
+            offstage: index != 4,
+            child: TickerMode(
+              enabled: index == 4,
+              child: const MaterialApp(
+                home: Scaffold(body: NewEntry()),
+                debugShowCheckedModeBanner: false,
+              ),
+            ),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         //Floating action button on Scaffold
         onPressed: () {
-          //code to execute on button press
+          setState(() {
+            index = 4;
+          });
         },
         child: const Icon(Icons.add), //icon inside button
       ),

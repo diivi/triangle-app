@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class DailiesPage extends StatefulWidget {
-  const DailiesPage({Key? key}) : super(key: key);
+class NewEntry extends StatefulWidget {
+  const NewEntry({Key? key}) : super(key: key);
 
   @override
-  _DailiesPageState createState() => _DailiesPageState();
+  _NewEntryState createState() => _NewEntryState();
 }
 
-class _DailiesPageState extends State<DailiesPage> {
+class _NewEntryState extends State<NewEntry> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: const Text(
-        'Dailies',
+        'New Transactions',
         style: TextStyle(color: Colors.black),
       ),
     );
