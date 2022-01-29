@@ -70,5 +70,4 @@ child: Container(
             decoration: (BoxDecoration(
                 color: Color.fromRGBO(128, 0, 0, 1),
                 borderRadius: BorderRadius.circular(5))),
-
 */
