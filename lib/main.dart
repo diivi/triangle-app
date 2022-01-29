@@ -100,6 +100,7 @@ class _TriangleAppState extends State<TriangleApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       extendBodyBehindAppBar: true,
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
